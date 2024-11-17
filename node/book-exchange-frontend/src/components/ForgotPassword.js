@@ -2,6 +2,24 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
 import api from './Api'; // Adjust the path as per your project structure
 
+/**
+ * ForgotPassword Component
+ * 
+ * This component allows users to reset their password by verifying an OTP sent to 
+ * their email address. It consists of two steps: sending an OTP and resetting the 
+ * password after OTP verification.
+ * 
+ * The user provides their email to receive an OTP, which they use to verify their 
+ * identity. Once the OTP is verified, the user can set a new password and confirm it.
+ * A countdown timer is shown for the OTP validity, with the option to resend OTP after expiration.
+ * 
+ * @component
+ * @example
+ * return (
+ *   <ForgotPassword />
+ * )
+ * @returns {JSX.Element} A form that enables users to reset their password by verifying an OTP.
+ */
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
   const [otp, setOtp] = useState('');

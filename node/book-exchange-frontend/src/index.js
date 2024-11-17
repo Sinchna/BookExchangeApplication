@@ -1,39 +1,82 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
-// Import your components
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import Home from './pages/Home';
-import MyBooks from './components/MyBooks';
-import ExchangeRequests from './components/ExchangeRequests';
+import NotFound from './pages/NotFound';
+import Contact from './pages/Contact';
 import Login from './components/Login';
 import ForgotPassword from './components/ForgotPassword';
 import Register from './components/Register';
 import Profile from './components/Profile';
 import ManageBooks from './components/ManageBooks';
+import ExchangeRequests from './components/ExchangeRequests';
 import TransactionHistory from './components/TransactionHistory';
 import AboutUs from './components/AboutUs';
-import Contact from './pages/Contact';
-import NotFound from './pages/NotFound';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
+/**
+ * App Component
+ * 
+ * This is the main component of the application, responsible for routing and displaying 
+ * different pages based on the URL path. It includes the header, footer, and the routing 
+ * setup for different pages such as login, registration, profile, and more.
+ * 
+ * Routes are handled using `react-router-dom`, and each path is mapped to a specific 
+ * component to be displayed.
+ * 
+ * @component
+ * @example
+ * return (
+ *   <App />
+ * )
+ * @returns {JSX.Element} The main application layout with routing and page components.
+ */
+function App() {
+  return (
     <Router>
+      {/* Header Section */}
+      <Header />
+      
+      {/* Routing for different pages */}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/my-books" element={<MyBooks />} />
-        <Route path="/exchange-requests" element={<ExchangeRequests />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/send-password-reset-code" element={<ForgotPassword />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/manage-books" element={<ManageBooks />} />
-        <Route path="/transaction-history" element={<TransactionHistory />} />
-        <Route path="/about" element={<AboutUs />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="*" element={<NotFound />} /> {/* Handle 404 */}
+        {/* Home page route */}
+        <Route path="/" element={<Home />} /> 
+
+        {/* Login page route */}
+        <Route path="/login" element={<Login />} /> 
+
+        {/* Register page route */}
+        <Route path="/register" element={<Register />} /> 
+
+        {/* User profile page route */}
+        <Route path="/profile" element={<Profile />} /> 
+
+        {/* Manage books page route */}
+        <Route path="/manage-books" element={<ManageBooks />} /> 
+
+        {/* Exchange requests page route */}
+        <Route path="/exchange-requests" element={<ExchangeRequests />} /> 
+
+        {/* Transaction history page route */}
+        <Route path="/transaction-history" element={<TransactionHistory />} /> 
+
+        {/* About Us page route */}
+        <Route path="/about" element={<AboutUs />} /> 
+
+        {/* Contact page route */}
+        <Route path="/contact" element={<Contact />} /> 
+
+        {/* Forgot Password page route */}
+        <Route path="/forgot-password" element={<ForgotPassword />} /> 
+
+        {/* 404 page for unknown paths */}
+        <Route path="*" element={<NotFound />} /> 
       </Routes>
+
+      {/* Footer Section */}
+      <Footer />
     </Router>
-  </React.StrictMode>
-);
+  );
+}
+
+export default App;
